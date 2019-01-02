@@ -8,7 +8,7 @@ div.style.top = `${divY}px`;
 
 let drawActive = false
 
-div.addEventListener("mousedown", () => {
+div.addEventListener("mousedown", (e) => {
     div.style.backgroundColor = "grey"
     drawActive = true
     insertDivX = e.offsetX
@@ -17,12 +17,12 @@ div.addEventListener("mousedown", () => {
 
 })
 div.addEventListener("mousemove", (e) => {
-    if(drawActive) {
-    divX = e.clientX
-    divY = e.clientY
-    div.style.left = `${divX - 50}px`;
-    div.style.top = `${divY - 50}px`;
-}
+    if (drawActive) {
+        divX = e.clientX - insertDivX
+        divY = e.clientY - insertDivY
+        div.style.left = `${divX}px`;
+        div.style.top = `${divY}px`;
+    }
 })
 div.addEventListener("mouseup", () => {
     div.style.backgroundColor = "black"
